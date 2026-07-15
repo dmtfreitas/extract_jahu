@@ -13,7 +13,6 @@ sys.path.append (PARENT_DIR)
 
 import pdfplumber
 import re
-from openpyxl import Workbook
 from modules.read_ctms import read_ctms
 from datetime import datetime
 
@@ -24,10 +23,6 @@ return_folder = os.path.abspath (os.path.join (folder_path, '..'))
 pdf_folder = os.path.join (return_folder, 'JAHU', 'PDFs')
 
 ctm_codes = read_ctms()
-
-wb = Workbook()
-ws = wb.active
-line_sheet = 1
 
 def log_error (message, log_file_path):
     
@@ -81,9 +76,6 @@ def taxpayer_folders_creator_and_distribution ():
                             
                             taxpayer = pattern.group (1).strip ()
                             print (taxpayer)
-                            
-                            ws.cell (row=line_sheet, column=1, value=taxpayer)
-                            line_sheet += 1
                             
                             break
 
